@@ -276,7 +276,7 @@ namespace ViewModels
             if (CanRemoveSelectedUser())
             {
                 //check to make sure there is a user selected and that it isn't our filler user data.
-                if (SelectedUser != null && SelectedUser.Name != " " && SelectedUser.Password!= " ")
+                if (SelectedUser != null && SelectedUser.Name != " " && SelectedUser.Password!= "")
                 {
                     int index = Users.IndexOf(SelectedUser);
 
@@ -291,6 +291,7 @@ namespace ViewModels
                     doc.Save(_xmlPath);
 
                     //Delete the folder structure as well.
+                    if (Directory.Exists(string.Format(@"Data\Users\{0}", SelectedUser.Name)))
                         Directory.Delete(string.Format(@"Data\Users\{0}", SelectedUser.Name), true);
 
                     // Next remove the current User.

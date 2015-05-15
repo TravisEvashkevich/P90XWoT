@@ -155,7 +155,7 @@ namespace ViewModels
                 //have to clear the dummy data from the start up.
                 Workouts.Clear();
                 var path = string.Format(@"Data\Users\{0}\History\", LoggedInUser.Name);
-                if (Directory.GetFiles(path).Length >= 0)
+                if (Directory.Exists(path) && (Directory.GetFiles(path).Length >= 0))
                 {
                     String[] fileNamesWithoutExtention =
                         Directory.GetFiles(path, "*.xml")

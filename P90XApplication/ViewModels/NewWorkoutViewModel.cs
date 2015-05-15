@@ -291,6 +291,8 @@ namespace ViewModels
             {
                 string history = string.Format(@"Data\Users\{0}\History\",
                                                 UserViewModel.LoggedInUser.Name);
+                if (!Directory.Exists(history))
+                    Directory.CreateDirectory(history);
                 //Save the workout to the History Folder first.
                 if (Directory.Exists(history))
                 {
@@ -322,6 +324,8 @@ namespace ViewModels
 
                 string last = string.Format(@"Data\Users\{0}\Last\",
                                                 UserViewModel.LoggedInUser.Name);
+                if (!Directory.Exists(last))
+                    Directory.CreateDirectory(last);
                 //Save the workoutout to the Last folder (just overwrite the currently made Workout if there is one there.)
                 if (Directory.Exists(history))
                 {

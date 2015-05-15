@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EccentricUpper>
+	<Workout Name="Standard Push-Ups " Reps="0"/>
+	<Workout Name="Standard Pull-Ups" Reps="0"/>
+	<Workout Name="Military Press" Reps="0"/>
+	<Workout Name="Military Push-Ups" Reps="0"/>
+	<Workout Name="Chin-Ups" Reps="0"/>
+	<Workout Name="Deep Swimmer’s Press" Reps="0"/>
+	<Workout Name="Fly Push-Ups " Reps="0"/>
+	<Workout Name="V Pull-Ups" Reps="0"/>
+	<Workout Name="Upright Hammer Pull " Reps="0"/>
+	<Workout Name="Staggered Push-Ups (5 ea) Right" Reps="0"/>
+	<Workout Name="Staggered Push-Ups (5 ea) Left" Reps="0"/>
+	<Workout Name="Rocket Launcher Row" Reps="0"/>
+	<Workout Name="Lateral/Anterior Raise (12 reps) " Reps="0"/>
+	<Workout Name="Plyo Push-Ups" Reps="0"/>
+	<Workout Name="Vaulter Pull-Ups (5 ea) Right" Reps="0"/>
+	<Workout Name="Vaulter Pull-Ups (5 ea) Left" Reps="0"/>
+	<Workout Name="Pterodactyl Flys " Reps="0"/>
+	<Workout Name="Rocket Launcher Kickback" Reps="0"/>
+	<Workout Name="Flip Flop Combo" Reps="0"/>
+	<Workout Name="Tricep Skyfers (5 ea) Right" Reps="0"/>
+	<Workout Name="Tricep Skyfers (5 ea) Left" Reps="0"/>
+	<Workout Name="Kneeling Preacher Curl" Reps="0"/>
+</EccentricUpper>
