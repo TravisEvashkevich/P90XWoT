@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="Views.CalendarView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:views="clr-namespace:Views"
+             xmlns:vm="clr-namespace:ViewModels;assembly=ViewModels"
+             xmlns:models="clr-namespace:Models;assembly=Models"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance vm:CalendarViewModel}"
+             d:DesignHeight="505.3" d:DesignWidth="600.8">
+
+    <Grid>
+        <DockPanel LastChildFill="True">
+            <StackPanel DockPanel.Dock="Bottom">
+                <StackPanel x:Name="ButtonStackPanel"  Orientation="Horizontal">
+                    <Button x:Name="Load" Width="auto" Height="30" Content="Load Previous" Command="{Binding CmdLoad}" ToolTip="Hit this to load the previous workouts you have saved or to reload after saving a new workout."/>
+                    <Button x:Name="AddToCompare" Content="Add To Compare" Command="{Binding CmdAddToCompare}" ToolTip="You can select two workouts to Compare. Obviously this means selecting the same type of workout as selecting two not the same makes no sense."/>
+                </StackPanel>
+
+                <Grid>
+                    <StackPanel >
+                        <DockPanel >
+                            <GroupBox Header="First Workout"  >
+                                <ListBox Width="auto" ItemsSource="{Binding CompareList1}" MaxHeight="250">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate DataType="models:RepsModel">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="0" Text="{Binding Reps}" Width="20" Height="auto"/>
+                                                <TextBlock Grid.Column="1" Text="{Binding Details}" Width="auto" Height="auto"/>
+                                                <TextBlock Grid.Column="2" Margin="5,0,0,0" Text="{Binding RepName}" Height="auto"/>
+
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </GroupBox>
+                            <GroupBox Header="Second Workout" >
+                                <ListBox Width="auto" ItemsSource="{Binding CompareList2}" MaxHeight="250">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate DataType="models:RepsModel">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="0" Text="{Binding Reps}" Width="20" Height="auto"/>
+                                                <TextBlock Grid.Column="1" Text="{Binding Details}" Width="auto" Height="auto"/>
+                                                <TextBlock Grid.Column="2" Margin="5,0,0,0" Text="{Binding RepName}" Height="auto"/>
+
+                                            </Grid>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </GroupBox>
+                        </DockPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <Button x:Name="BtnClear" Width="75" Height="30" Content="Clear" Command="{Binding CmdClear}" ToolTip="This will clear the current selections of Compared Workouts."/>
+                        </StackPanel>
+                    </StackPanel>
+
+                </Grid>
+            </StackPanel>
+
+            <GroupBox Header="Previous Workouts" DockPanel.Dock="Left">
+                <ListBox x:Name="PreviousWorkoutsLBox"  Height="250" SelectionMode="Single" MinWidth="100" ItemsSource="{Binding WorkoutNames}"  SelectedItem="{Binding SelectedWorkoutName}"  ToolTip="Click a workout to bring up the details in the next window."/>
+            </GroupBox>
+
+            <GroupBox Header="Previous Workout Details" >
+                <ListBox Width="auto" ItemsSource="{Binding SelectedWorkout}" Height="250">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="models:RepsModel" >
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Grid.Column="0" Text="{Binding Reps}" Width="20"/>
+                                <TextBlock Grid.Column="1" Text="{Binding Details}"/>
+                                <TextBlock Grid.Column="2" Margin="5,0,0,0" Text="{Binding RepName}"/>
+
+                            </Grid>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+            </GroupBox>
+
+        </DockPanel>
+    </Grid>
+
+</UserControl>

@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="Views.UserView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:vm ="clr-namespace:ViewModels;assembly=ViewModels"
+             mc:Ignorable="d" 
+             d:DataContext="{d:DesignInstance vm:UserViewModel}"
+             d:DesignHeight="300" d:DesignWidth="350">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <TextBlock FontSize="20" FontFamily="American Capitan">P90X WORKOUT TRACKER (WOT)</TextBlock>
+
+        <GroupBox Grid.Row="1" Header="User Selection">
+            <DockPanel LastChildFill="True" x:Name="UserButtonDp" Height="122" VerticalAlignment="Bottom" >
+                <TextBox x:Name="PasswordTBox" DockPanel.Dock="Bottom" Width="200" Height="30" Text="{Binding EnteredPassword}" IsEnabled="{Binding NotLoggedIn}" ToolTip="Enter your password and Login"/>
+                <TextBlock DockPanel.Dock="Bottom"  Width="50" Height="15" Text="Password" VerticalAlignment="Center"/>
+                <StackPanel DockPanel.Dock="Right" Margin="5">
+                    <Button x:Name="Logon" Margin="5" Width="50" Height="25" IsEnabled="{Binding NotLoggedIn}" Command="{Binding CmdLogin}" Content="Logon" Click="Logon_Click"/>
+                    <Button x:Name="Logoff" Width="50" Height="25" Command="{Binding CmdLogoff}" Content="Logoff"/>
+                </StackPanel>
+                <TextBlock DockPanel.Dock="Top" Text="User Name" Height="15" Width="60"/>
+                <ComboBox x:Name="UserComboBox" Margin="5" DockPanel.Dock="Top" Width="auto" Height="25" IsEnabled="{Binding NotLoggedIn}"  SelectedIndex="0" SelectedValue="{Binding SelectedUser}" DisplayMemberPath="Name" ToolTip="Select your user name from the dropdown OR add a user if you do not have one yet"/>
+            </DockPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="2" Header="Add New User">
+            <StackPanel>
+                <StackPanel>
+                    <TreeView>
+                        <TreeViewItem Header="Click to open">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Margin="55,0,0,0" Text="Name"/>
+                                <TextBlock Margin="70,0,0,0" Text="Password"/>
+                            </StackPanel>
+                            <DockPanel>
+                                <Button Name="AddUser" Height="30" Width="auto"  Command="{Binding CmdNewUser}" Content="Add User" Click="AddUser_Click" ToolTip="When you have entered a UserName and Password, click this to add the user to the list so you can save your data."/>
+                                <TextBox x:Name="UserNameInput" Height="30" Width="100" Text="{Binding NameOfNewUser}" ToolTip="Enter your desired Username here"/>
+                                <TextBox x:Name="PasswordInput" Height="30" Width="100" Text="{Binding Password}" ToolTip="Enter your password here"/>
+                            </DockPanel>
+                            <DockPanel>
+                                <TextBlock Text="Program"/>
+                                <ComboBox x:Name="ProgramComboBox" SelectedIndex="0" SelectedValue="{Binding SelectedProgram}" MinWidth="100"/>
+                            </DockPanel>
+                        </TreeViewItem>
+                    </TreeView>
+                </StackPanel>
+            </StackPanel>
+        </GroupBox>
+
+        <GroupBox Grid.Row="3" Header="User Removal">
+            <Button DockPanel.Dock="Bottom" x:Name="RemoveUser" Height="30" Width="90" Content="Remove User" Command="{Binding CmdRemoveUser}" >
+                <Button.ToolTip>
+                    <TextBlock>
+                        Click this to Remove the currently selected User. 
+                        <LineBreak/>
+                        -=NOTE=- clicking this will IMMEDIATLY remove the user data and all 
+                        <LineBreak/>
+                        saved content associated with it. Be sure you want to remove the user
+                        <LineBreak/>
+                         before clicking as there is no way to retrieve the data after it's gone!"
+                    </TextBlock>
+                </Button.ToolTip>
+            </Button>
+        </GroupBox>
+
+        <TextBlock Grid.Row="4" x:Name="Confirmation" Height="30" Width="200" TextAlignment="Center" Text="{Binding LoggedInStatus}" ToolTip="This will let you know if you can log in."/>
+        <TextBlock Grid.Row="4" Text="Version 1.3"/>
+    </Grid>
+</UserControl>

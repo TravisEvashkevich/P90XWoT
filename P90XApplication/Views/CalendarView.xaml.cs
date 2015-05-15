@@ -1,0 +1,41 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using Models;
+using ViewModels;
+using Views.Properties;
+
+namespace Views
+{
+    /// <summary>
+    /// Interaction logic for CalendarView.xaml
+    /// </summary>
+    public partial class CalendarView : UserControl
+    {
+        private CalendarViewModel _calendarViewModel = new CalendarViewModel();
+
+        public CalendarViewModel CalendarViewModel
+        {
+            get { return _calendarViewModel; }
+            set { _calendarViewModel = value; }
+        }
+
+        public CalendarView()
+        {
+            InitializeComponent();
+
+            DataContext = CalendarViewModel;
+        }
+     }
+}
